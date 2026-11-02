@@ -52,7 +52,7 @@ To reproduce a screenshot from the command line, launch with arguments, for exam
   - On 2026-11-02 this project (v1.0.1), unmodified, resolved `ai-capability-plane-kit` from GitHub at **v1.1.0** (revision `d3fbf35`, pinned in the committed `Package.resolved`) and built with Xcode 27.2.
   - It was installed on an iPhone Duo Simulator (iOS 27.2) and launched in all four launch-argument scenarios. The app was confirmed still running after each screenshot, and the four screenshots above are from those runs.
   - Scenarios 03 and 04 dispatched a real `CapabilityPlane.perform`: 03 served by the US-hosted cloud after the simulated on-device failure, and 04 fell back to the no-AI result.
-- **CI** ([Actions tab](https://github.com/rajatslakhina/ai-capability-plane-demo-app/actions/workflows/ci.yml)): _results for v1.0.1 are added here once the first run reports._
+- **CI** ([Actions tab](https://github.com/rajatslakhina/ai-capability-plane-demo-app/actions/workflows/ci.yml)). On `macos-15` (the job prints Xcode 16.4), `xcodebuild -resolvePackageDependencies` fetched the package from GitHub at `1.1.0`. The `Demo` scheme then built for `generic/platform=iOS Simulator` (`BUILD SUCCEEDED`). That job is compile-only, so the Simulator runs above are the evidence that the app actually launches.
 - **History.** v1.0.0's screenshots came from runs against a local checkout of the library, made before it was published. After publishing, the v1.0.0 project was built against GitHub `v1.0.0`, and the outage scenario was re-run. In v1.0.1, all four screenshots come from the unmodified project resolving v1.1.0 from GitHub.
 
 ## License
