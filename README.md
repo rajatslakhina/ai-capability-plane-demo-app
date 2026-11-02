@@ -10,7 +10,7 @@
 | **US, on-device outage, run.** Attempt 1 (on-device) fails. The request fails over to the US-hosted cloud and never to the EU or CN cloud. | **US account, device in China, run.** Both rule sets bind, nothing qualifies, and the request falls back to the no-AI result. |
 | ![Outage failover](Demo/Screenshots/03-us-outage-failover.png) | ![Traveller degraded](Demo/Screenshots/04-traveller-us-cn-degraded.png) |
 
-*These are real screenshots, not mockups. They were captured with `xcrun simctl io … screenshot` from the app running on an iPhone Duo Simulator (iOS 27.2, Xcode 27.2), driven by launch arguments. **Disclosure:** these runs used a scratch copy of the project in which the remote package reference was replaced by a local path to the library checkout, because the library was not on GitHub yet. See [Verification](#verification) for what was re-checked against the published tag.*
+*These are real screenshots, not mockups. They were captured with `xcrun simctl io … screenshot` from the app running on an iPhone Duo Simulator (iOS 27.2, Xcode 27.2), driven by launch arguments. **Disclosure:** these four scenario runs used a scratch copy of the project that pointed at a local checkout of the library, because the library wasn't published yet. After publishing, the unmodified project was built against the GitHub `v1.0.0` tag and run again on the same Simulator. See [Verification](#verification).*
 
 ## Why this matters
 
@@ -48,10 +48,12 @@ To reproduce a screenshot from the command line, launch with arguments, for exam
 
 ## Verification
 
-Two facts are stated separately, on purpose:
-
-- **It ran on a Simulator.** On 2026-11-02 the app was built with Xcode 27.2, then installed and launched on an iPhone Duo Simulator (iOS 27.2) in four scenarios driven by launch arguments. Each scenario was confirmed still running after its screenshot. The scenarios that ran a request (03, 04) dispatched it through `CapabilityPlane.perform` and rendered the outcome. **These runs used a scratch copy of this project in which the remote package reference was replaced by a local path to the library checkout**, because the library was not on GitHub yet.
-- **It builds against the published package:** *not yet verified*. That needs the library's `v1.0.0` tag to exist on GitHub. The CI job in `.github/workflows/ci.yml` checks exactly this on `macos-15`: it runs `xcodebuild -resolvePackageDependencies`, then builds the `Demo` scheme for `generic/platform=iOS Simulator`. **CI has not run yet**, and `Package.resolved` will be committed once the tag resolves.
+- **It runs on a Simulator, built from this repo as committed.**
+  - On 2026-11-02 this project, unmodified, resolved `ai-capability-plane-kit` from GitHub at **`v1.0.0`** (revision `9254e65`, pinned in the committed `Package.resolved`) and built with Xcode 27.2.
+  - It was installed and launched on an iPhone Duo Simulator (iOS 27.2) with `-outage apple.ondevice -autorun YES`.
+  - It was confirmed still running after the run. The screen showed *Served by Claude (US-hosted)*, with the on-device attempt marked failed: the same result as screenshot 03.
+- **The four screenshots** come from scenario runs earlier that day, against a local checkout of the same library code (see the disclosure above). Each scenario was confirmed still running after its screenshot.
+- **CI** ([Actions tab](https://github.com/rajatslakhina/ai-capability-plane-demo-app/actions/workflows/ci.yml)). On `macos-15`, `xcodebuild -resolvePackageDependencies` fetched the package from GitHub at `1.0.0`. The `Demo` scheme then built for `generic/platform=iOS Simulator` (`BUILD SUCCEEDED`). That job is compile-only, so the Simulator run above is the evidence that the app actually launches.
 
 ## License
 
