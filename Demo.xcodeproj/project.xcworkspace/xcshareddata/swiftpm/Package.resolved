@@ -1,0 +1,15 @@
+{
+  "originHash" : "a8f33985d6fb8d0deef3c4baca72c1b916b4306d765a18a0076608227c84b32c",
+  "pins" : [
+    {
+      "identity" : "ai-capability-plane-kit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rajatslakhina/ai-capability-plane-kit",
+      "state" : {
+        "revision" : "9254e65e2996f2f6b5f8ce17ae181997318ac5f9",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}
