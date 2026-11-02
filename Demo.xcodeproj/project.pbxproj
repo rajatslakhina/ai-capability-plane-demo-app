@@ -1,0 +1,267 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		15A45C25FBACA74D06E9020B /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5D6BD1D879114CDF85A55E /* DemoApp.swift */; };
+		8009F467C2CEFCC6D3344BD8 /* DemoFleet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7805CA82F2EF1297E85EAC13 /* DemoFleet.swift */; };
+		D047C953F5F1107DFA45BF7D /* CapabilityPlane in Frameworks */ = {isa = PBXBuildFile; productRef = D9548E3238BCC8B3D5A6F7C8 /* CapabilityPlane */; };
+		CFED4413B33E1F6ED9901B9B /* CapabilityPlaneUI in Frameworks */ = {isa = PBXBuildFile; productRef = FDA603653EC88358FC41F0BF /* CapabilityPlaneUI */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		328B02C38C3DCC9B34FFB9B6 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E5D6BD1D879114CDF85A55E /* DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoApp.swift; sourceTree = "<group>"; };
+		7805CA82F2EF1297E85EAC13 /* DemoFleet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoFleet.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D8E263BA12EBE76BC8C3DE8E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D047C953F5F1107DFA45BF7D /* CapabilityPlane in Frameworks */,
+				CFED4413B33E1F6ED9901B9B /* CapabilityPlaneUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AC4E12421FC498D0DE3BE41A = {
+			isa = PBXGroup;
+			children = (
+				71A44C1BB45E7BA6B0C556D1 /* Demo */,
+				385BDEB4BD13E2714E6A51A9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		71A44C1BB45E7BA6B0C556D1 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				6E5D6BD1D879114CDF85A55E /* DemoApp.swift */,
+				7805CA82F2EF1297E85EAC13 /* DemoFleet.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		385BDEB4BD13E2714E6A51A9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				328B02C38C3DCC9B34FFB9B6 /* Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		486E65389BBF093266D47ED0 /* Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8D8B363085FAA6FC006BF6C /* Build configuration list for PBXNativeTarget "Demo" */;
+			buildPhases = (
+				0EB8F6D448B599524E49F341 /* Sources */,
+				D8E263BA12EBE76BC8C3DE8E /* Frameworks */,
+				1C169FD27BABC670D822A87A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Demo;
+			packageProductDependencies = (
+				D9548E3238BCC8B3D5A6F7C8 /* CapabilityPlane */,
+				FDA603653EC88358FC41F0BF /* CapabilityPlaneUI */,
+			);
+			productName = Demo;
+			productReference = 328B02C38C3DCC9B34FFB9B6 /* Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2DE9CED6D7376193E37E205A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = 33D1FEDF614BFDC06EB04E97 /* Build configuration list for PBXProject "Demo" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC4E12421FC498D0DE3BE41A;
+			packageReferences = (
+				F2EBCB647124509257FE8F44 /* XCRemoteSwiftPackageReference "ai-capability-plane-kit" */,
+			);
+			productRefGroup = 385BDEB4BD13E2714E6A51A9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				486E65389BBF093266D47ED0 /* Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1C169FD27BABC670D822A87A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0EB8F6D448B599524E49F341 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15A45C25FBACA74D06E9020B /* DemoApp.swift in Sources */,
+				8009F467C2CEFCC6D3344BD8 /* DemoFleet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6C8F68895CFDCFF25B48C8D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ED3BCE9FE8793AF7BEB2202C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		38B2D83E65FD4944C213851D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Capability Plane";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rajatlakhina.CapabilityPlaneDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6E9AA70DA9C736ADF519335E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Capability Plane";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rajatlakhina.CapabilityPlaneDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		33D1FEDF614BFDC06EB04E97 /* Build configuration list for PBXProject "Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6C8F68895CFDCFF25B48C8D2 /* Debug */,
+				ED3BCE9FE8793AF7BEB2202C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F8D8B363085FAA6FC006BF6C /* Build configuration list for PBXNativeTarget "Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38B2D83E65FD4944C213851D /* Debug */,
+				6E9AA70DA9C736ADF519335E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F2EBCB647124509257FE8F44 /* XCRemoteSwiftPackageReference "ai-capability-plane-kit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rajatslakhina/ai-capability-plane-kit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D9548E3238BCC8B3D5A6F7C8 /* CapabilityPlane */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2EBCB647124509257FE8F44 /* XCRemoteSwiftPackageReference "ai-capability-plane-kit" */;
+			productName = CapabilityPlane;
+		};
+		FDA603653EC88358FC41F0BF /* CapabilityPlaneUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2EBCB647124509257FE8F44 /* XCRemoteSwiftPackageReference "ai-capability-plane-kit" */;
+			productName = CapabilityPlaneUI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 2DE9CED6D7376193E37E205A /* Project object */;
+}
