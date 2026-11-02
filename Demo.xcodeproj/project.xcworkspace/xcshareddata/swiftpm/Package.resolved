@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/rajatslakhina/ai-capability-plane-kit",
       "state" : {
-        "revision" : "9254e65e2996f2f6b5f8ce17ae181997318ac5f9",
-        "version" : "1.0.0"
+        "revision" : "d3fbf35a0342dc13132e976d7bef7be8ed6201b8",
+        "version" : "1.1.0"
       }
     }
   ],

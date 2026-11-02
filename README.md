@@ -10,7 +10,7 @@
 | **US, on-device outage, run.** Attempt 1 (on-device) fails. The request fails over to the US-hosted cloud and never to the EU or CN cloud. | **US account, device in China, run.** Both rule sets bind, nothing qualifies, and the request falls back to the no-AI result. |
 | ![Outage failover](Demo/Screenshots/03-us-outage-failover.png) | ![Traveller degraded](Demo/Screenshots/04-traveller-us-cn-degraded.png) |
 
-*These are real screenshots, not mockups. They were captured with `xcrun simctl io … screenshot` from the app running on an iPhone Duo Simulator (iOS 27.2, Xcode 27.2), driven by launch arguments. **Disclosure:** these four scenario runs used a scratch copy of the project that pointed at a local checkout of the library, because the library wasn't published yet. After publishing, the unmodified project was built against the GitHub `v1.0.0` tag and run again on the same Simulator. See [Verification](#verification).*
+*These are real screenshots, not mockups. They were captured with `xcrun simctl io … screenshot` from **this project as committed**, with `ai-capability-plane-kit` resolved from GitHub at **v1.1.0**, running on an iPhone Duo Simulator (iOS 27.2, Xcode 27.2) and driven by launch arguments. See [Verification](#verification).*
 
 ## Why this matters
 
@@ -27,13 +27,13 @@ iOS 27.3 brings Apple Intelligence to China with a different stack and a differe
 ## Design notes (app side)
 
 - **The app owns the policy.** `Demo/DemoFleet.swift` defines the fleet, the residency rules, the jurisdiction map and the eval scores. The library's `CapabilityConsoleView` only renders whatever plane it is handed. In production the same config would arrive remotely with a version number, and this copy would ship in the binary as the last-known-good fallback.
-- **The package is pinned to a version, not tracked by branch.** `Demo.xcodeproj` references the library as an `XCRemoteSwiftPackageReference` at `https://github.com/rajatslakhina/ai-capability-plane-kit`, `upToNextMajorVersion` from `1.0.0`. Every clone and every CI run resolves a released tag, never whatever `main` happens to be that day.
-- **Launch arguments for scripted runs.** `-storefront CN -region CN -os 27.3 -outage apple.ondevice -autorun YES`. Anything missing or invalid falls back to the defaults (US, iOS 27.2, no outage, no autorun). This is how the four screenshots above were produced without touching the UI.
+- **The package is pinned to a version, not tracked by branch.** `Demo.xcodeproj` references the library as an `XCRemoteSwiftPackageReference` at `https://github.com/rajatslakhina/ai-capability-plane-kit`, `upToNextMajorVersion` from `1.1.0`, and the committed `Package.resolved` pins the exact v1.1.0 revision. Every clone and every CI run resolves a released tag, never whatever `main` happens to be that day. The floor is 1.1.0 rather than 1.0.0 on purpose: v1.1.0 is the release whose auditor checks registered descriptors, and the demo should never be able to resolve the version without that fix.
+- **Launch arguments for scripted runs.** `-storefront CN -region CN -os 27.3 -outage apple.ondevice -autorun YES`. Anything missing or invalid falls back to a default: storefront US, device region equal to the storefront, iOS 27.2, no outage and no autorun. This is how the four screenshots above were produced without touching the UI.
 
 ### Trade-offs and rejected alternatives
 
 - **The app owns the policy rather than the library bundling a default.** This costs some boilerplate in `DemoFleet.swift`. The rejected alternative was a "reference fleet" inside the library. It would make the demo shorter, but it invites production apps to ship someone else's residency rules unread.
-- **`upToNextMajorVersion` plus a committed `Package.resolved`, rather than `exactVersion`.** The range lets a consumer pick up 1.x fixes deliberately with *Update Package*. The committed resolved file means a fresh clone builds the exact revision CI built until someone bumps it. The rejected options: tracking a branch makes builds irreproducible, and an exact pin means every patch release needs a pbxproj edit.
+- **`upToNextMajorVersion` plus a committed `Package.resolved`, rather than `exactVersion`.** The range lets a consumer pick up 1.x fixes deliberately with *Update Package*. The committed resolved file means a fresh clone builds the exact revision CI built until someone bumps it. The rejected options: tracking a branch makes builds irreproducible, and an exact pin means every patch release needs a pbxproj edit. The one deliberate exception is a safety fix: then the floor moves up, as it did to 1.1.0, so the affected version can no longer be resolved at all.
 - **Launch arguments rather than a UI-test target for screenshots.** Arguments are about ten lines of code and work with `simctl` in any script. A UI-test target would also be able to tap through the flow. It is the better long-term choice and the obvious next step, but it would double the project surface for one screenshot set. The logic behind the console is unit-tested in the library (`ConsoleModelTests`).
 - **Simulated adapters, not live providers.** The demo shows the *policy*, not model quality, and it has to run offline without keys. Adapters for Foundation Models, a regional SDK or an HTTP model API plug into the same `ProviderAdapter` protocol.
 
@@ -49,11 +49,11 @@ To reproduce a screenshot from the command line, launch with arguments, for exam
 ## Verification
 
 - **It runs on a Simulator, built from this repo as committed.**
-  - On 2026-11-02 this project, unmodified, resolved `ai-capability-plane-kit` from GitHub at **`v1.0.0`** (revision `9254e65`, pinned in the committed `Package.resolved`) and built with Xcode 27.2.
-  - It was installed and launched on an iPhone Duo Simulator (iOS 27.2) with `-outage apple.ondevice -autorun YES`.
-  - It was confirmed still running after the run. The screen showed *Served by Claude (US-hosted)*, with the on-device attempt marked failed: the same result as screenshot 03.
-- **The four screenshots** come from scenario runs earlier that day, against a local checkout of the same library code (see the disclosure above). Each scenario was confirmed still running after its screenshot.
-- **CI** ([Actions tab](https://github.com/rajatslakhina/ai-capability-plane-demo-app/actions/workflows/ci.yml)). On `macos-15`, `xcodebuild -resolvePackageDependencies` fetched the package from GitHub at `1.0.0`. The `Demo` scheme then built for `generic/platform=iOS Simulator` (`BUILD SUCCEEDED`). That job is compile-only, so the Simulator run above is the evidence that the app actually launches.
+  - On 2026-11-02 this project (v1.0.1), unmodified, resolved `ai-capability-plane-kit` from GitHub at **v1.1.0** (revision `d3fbf35`, pinned in the committed `Package.resolved`) and built with Xcode 27.2.
+  - It was installed on an iPhone Duo Simulator (iOS 27.2) and launched in all four launch-argument scenarios. The app was confirmed still running after each screenshot, and the four screenshots above are from those runs.
+  - Scenarios 03 and 04 dispatched a real `CapabilityPlane.perform`: 03 served by the US-hosted cloud after the simulated on-device failure, and 04 fell back to the no-AI result.
+- **CI** ([Actions tab](https://github.com/rajatslakhina/ai-capability-plane-demo-app/actions/workflows/ci.yml)): _results for v1.0.1 are added here once the first run reports._
+- **History.** v1.0.0's screenshots came from runs against a local checkout of the library, made before it was published. After publishing, the v1.0.0 project was built against GitHub `v1.0.0`, and the outage scenario was re-run. In v1.0.1, all four screenshots come from the unmodified project resolving v1.1.0 from GitHub.
 
 ## License
 

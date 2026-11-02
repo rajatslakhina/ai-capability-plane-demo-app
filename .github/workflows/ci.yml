@@ -12,6 +12,10 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
+      # Not pinned: macos-15 images rotate their Xcode installs, and a hard-coded path
+      # breaks when one is removed. The version is printed so every run is traceable.
+      - name: Toolchain versions
+        run: xcodebuild -version
       - name: Resolve the pinned remote package
         run: xcodebuild -resolvePackageDependencies -project Demo.xcodeproj -scheme Demo
       - name: Build Demo (compile-only, no device needed)
